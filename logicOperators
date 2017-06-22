@@ -1,0 +1,31 @@
+custom_and :: Bool -> Bool -> Bool
+custom_and False _ = False
+custom_and _ False = False
+custom_and True True = True
+
+custom_not :: Bool -> Bool
+custom_not True = False
+custom_not False = True
+
+
+custom_or :: Bool -> Bool -> Bool
+custom_or _ True = True
+custom_or True _ = True
+custom_or False False = False
+
+
+custom_nand :: Bool -> Bool -> Bool
+custom_nand x y | (custom_and x y == True) = False
+		| otherwise = True
+
+custom_nor :: Bool -> Bool -> Bool
+custom_nor x y | (custom_or x y == True) = False
+	       | otherwise = True
+
+custom_xor :: Bool -> Bool -> Bool
+custom_xor x y | (x == y) = False
+	       | otherwise = True
+
+
+custom_xnor :: Bool -> Bool -> Bool
+custom_xnor x y = custom_not(custom_xor x y)
